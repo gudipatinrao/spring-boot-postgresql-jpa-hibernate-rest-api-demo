@@ -45,7 +45,7 @@ pipeline {
       steps {
         sh """
         mvn -v
-        
+
         mvn test
         """
       }
