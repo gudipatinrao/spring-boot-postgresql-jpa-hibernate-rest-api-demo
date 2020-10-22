@@ -35,13 +35,13 @@ pipeline {
         env
         mvn -v
 
-        mvn clean install
+        mvn clean install -DskipTests
         """
       }
     }
 
     // Run Maven unit tests
-    stage('Unit Test'){
+   /*  stage('Unit Test'){
       steps {
         sh """
         mvn -v
@@ -49,7 +49,7 @@ pipeline {
         mvn test
         """
       }
-    }
+    } */
 
     // Build Container Image using the artifacts produced in previous stages
     stage('Build Spring App Image'){
