@@ -11,7 +11,7 @@ Check out the complete tutorial on the CalliCoder blog -
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/callicoder/spring-boot-postgresql-jpa-hibernate-rest-api-demo.git
+git clone https://github.com/gudipatinrao/spring-boot-postgresql-jpa-hibernate-rest-api-demo.git
 ```
 
 **2. Configure PostgreSQL**
