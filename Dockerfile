@@ -1,6 +1,6 @@
 FROM openliberty/open-liberty:springBoot2-ubi-min as staging
 USER root
-COPY postgres-demo-0.0.1-SNAPSHOT.jar /staging/fatClinic.jar
+COPY target/postgres-demo-0.0.1-SNAPSHOT.jar /staging/fatClinic.jar
 
 RUN springBootUtility thin \
  --sourceAppPath=/staging/fatClinic.jar \
