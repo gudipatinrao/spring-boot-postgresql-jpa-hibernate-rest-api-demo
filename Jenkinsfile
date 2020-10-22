@@ -34,7 +34,7 @@ pipeline {
         sh """
         env
         mvn -v
-        cd spring-petclinic
+        cd spring-boot-postgresql-jpa-hibernate-rest-api-demo
         mvn clean install
         """
       }
@@ -45,7 +45,7 @@ pipeline {
       steps {
         sh """
         mvn -v
-        cd spring-petclinic
+        cd spring-boot-postgresql-jpa-hibernate-rest-api-demo
         mvn test
         """
       }
