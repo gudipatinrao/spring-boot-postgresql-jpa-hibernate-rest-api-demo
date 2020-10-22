@@ -1,8 +1,10 @@
 package com.example.postgresdemo.controller;
 
+/*
 import com.example.postgresdemo.exception.ResourceNotFoundException;
 import com.example.postgresdemo.model.Question;
 import com.example.postgresdemo.repository.QuestionRepository;
+*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +15,12 @@ import javax.validation.Valid;
 @RestController
 public class QuestionController {
 
-    @Autowired
+
+    @GetMapping("/questions")
+    public String getQuestions( ) {
+        return "Hello from Openshift";
+    }
+    /*@Autowired
     private QuestionRepository questionRepository;
 
     @GetMapping("/questions")
@@ -46,5 +53,5 @@ public class QuestionController {
                     questionRepository.delete(question);
                     return ResponseEntity.ok().build();
                 }).orElseThrow(() -> new ResourceNotFoundException("Question not found with id " + questionId));
-    }
+    }*/
 }

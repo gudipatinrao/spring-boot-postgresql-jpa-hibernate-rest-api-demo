@@ -1,3 +1,4 @@
+/*
 package com.example.postgresdemo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -51,3 +52,4 @@ public class Answer extends AuditModel {
         this.question = question;
     }
 }
+*/
