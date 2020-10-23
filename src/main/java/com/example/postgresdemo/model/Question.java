@@ -1,4 +1,3 @@
-/*
 package com.example.postgresdemo.model;
 
 import javax.persistence.*;
@@ -48,4 +47,3 @@ public class Question extends AuditModel {
         this.description = description;
     }
 }
-*/

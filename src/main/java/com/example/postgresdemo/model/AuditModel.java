@@ -1,4 +1,3 @@
-/*
 package com.example.postgresdemo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -41,4 +40,4 @@ public abstract class AuditModel implements Serializable {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-}*/
+}

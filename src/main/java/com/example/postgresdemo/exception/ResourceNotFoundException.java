@@ -1,4 +1,3 @@
-/*
 package com.example.postgresdemo.exception;
 
 import org.springframework.http.HttpStatus;
@@ -14,4 +13,3 @@ public class ResourceNotFoundException extends RuntimeException {
         super(message, cause);
     }
 }
-*/
