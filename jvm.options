@@ -1,4 +1,4 @@
--Dhttps.protocols=TLSv12
--Djdk.tls.client.protocols=TLSv12
--Dhttps.protocols=TLSv12
--Dcom.ibm.jsse2.overrideDefaultProtocol=TLSv12
+-Dhttps.protocols=TLSv1.2
+-Djdk.tls.client.protocols=TLSv1.2
+-Dhttps.protocols=TLSv1.2
+-Dcom.ibm.jsse2.overrideDefaultProtocol=TLSv1.2
