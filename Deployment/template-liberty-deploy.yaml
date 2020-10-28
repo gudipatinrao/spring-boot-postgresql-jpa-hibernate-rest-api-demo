@@ -72,6 +72,7 @@ objects:
         name: ${APPLICATION_NAME}
       spec:
         containers:
+        - args: ["--spring.application.json=$(BINDING)"]
         - env:
           - name: MY_POD_IP
             valueFrom:
@@ -90,7 +91,7 @@ objects:
           image: ${APPLICATION_NAME}
           imagePullPolicy: Always
           name: ${APPLICATION_NAME}
-          args: ["--spring.application.json=$(BINDING)"]
+
           livenessProbe:
             tcpSocket:
               port: 9443
