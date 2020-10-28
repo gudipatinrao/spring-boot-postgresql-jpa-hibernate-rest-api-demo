@@ -78,9 +78,19 @@ objects:
               fieldRef:
                 apiVersion: v1
                 fieldPath: status.podIP
+          - name: BINDING
+            valueFrom:
+              secretKeyRef:
+                name: binding-postgresql-db
+                key: binding
+            volumeMounts:
+              - name: icdcert
+                mountPath: "/tmp/icdpub"
+                readOnly: true
           image: ${APPLICATION_NAME}
           imagePullPolicy: Always
           name: ${APPLICATION_NAME}
+          args: ["--spring.application.json=$(BINDING)"]
           livenessProbe:
             tcpSocket:
               port: 9443
@@ -121,6 +131,10 @@ objects:
         securityContext:
           runAsUser: 1001
           runAsNonRoot: true
+        volumes:
+          - name: icdcert
+            secret:
+              secretName: icdcert
     triggers:
     - imageChangeParams:
         automatic: true
