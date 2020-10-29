@@ -10,8 +10,11 @@
                   httpPort="9080"
                   httpsPort="9443" />
 
-    <springBootApplication id="rest-service"
-                           location="rest-service-0.0.1-SNAPSHOT.jar"
-                           name="rest-service" />
+    <springBootApplication id="pgrestapi-dev"
+                           location="target/postgres-demo-0.0.1-SNAPSHOT.jar"
+                           name="pgrestapi-dev" />
+    <featureManager>
+        <feature>transportSecurity-1.2</feature>
+    </featureManager>
 
 </server>
