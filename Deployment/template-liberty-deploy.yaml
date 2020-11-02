@@ -85,8 +85,8 @@ objects:
                 name: binding-postgresql-db
                 key: binding
             volumeMounts:
-              - name: icdcert
-                mountPath: "/tmp/icdpub"
+              - name: keystore-cert
+                mountPath: /etc/keystore/cert/
                 readOnly: true
           image: ${APPLICATION_NAME}
           imagePullPolicy: Always
@@ -133,9 +133,9 @@ objects:
           runAsUser: 1001
           runAsNonRoot: true
         volumes:
-          - name: icdcert
+          - name: keystore-cert
             secret:
-              secretName: icdcert
+              secretName: ${APPLICATION_NAME}-dev-cert-secret
     triggers:
     - imageChangeParams:
         automatic: true
