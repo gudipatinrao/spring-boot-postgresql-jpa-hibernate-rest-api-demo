@@ -124,12 +124,20 @@ objects:
                   privileged: false
                   readOnlyRootFilesystem: false
                   allowPrivilegeEscalation: false
+                volumeMounts:
+                  - name: keystore-cert
+                    mountPath: /etc/keystore/cert/
+                    readOnly: true
           serviceAccount: websphere
           serviceAccountName: websphere
           terminationGracePeriodSeconds: 60
           securityContext:
             runAsNonRoot: true
             runAsUser: 1001
+          volumes:
+            - name: keystore-cert
+              secret:
+                secretName: "${NAME}-dev-cert-secret"
 
       triggers:
         - imageChangeParams:
