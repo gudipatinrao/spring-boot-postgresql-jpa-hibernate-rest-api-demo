@@ -137,7 +137,7 @@ objects:
           volumes:
             - name: keystore-cert
               secret:
-                secretName: "${NAME}-dev-cert-secret"
+                secretName: "${APPLICATION_NAME}-dev-cert-secret"
 
       triggers:
         - imageChangeParams:
