@@ -86,6 +86,7 @@ objects:
                 allowPrivilegeEscalation: false
                 dnsPolicy: ClusterFirst
                 imagePullPolicy: Always
+                args: ["--spring.application.json=$(BINDING)"]
                 livenessProbe:
                   tcpSocket:
                     failureThreshold: 3
@@ -124,9 +125,15 @@ objects:
                   privileged: false
                   readOnlyRootFilesystem: false
                   allowPrivilegeEscalation: false
+                env:
+                  - name: BINDING
+                    valueFrom:
+                      secretKeyRef:
+                        name: binding-postgresql-db
+                        key: binding
                 volumeMounts:
-                  - name: keystore-cert
-                    mountPath: /etc/keystore/cert/
+                  - name: icdcert
+                    mountPath: "/tmp/icdpub"
                     readOnly: true
           serviceAccount: websphere
           serviceAccountName: websphere
@@ -135,9 +142,9 @@ objects:
             runAsNonRoot: true
             runAsUser: 1001
           volumes:
-            - name: keystore-cert
+            - name: icdcert
               secret:
-                secretName: "${APPLICATION_NAME}-dev-cert-secret"
+                secretName: icdcert
 
       triggers:
         - imageChangeParams:
