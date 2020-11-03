@@ -60,7 +60,6 @@ objects:
       name: "${APPLICATION_NAME}"
       labels:
         application: "${APPLICATION_NAME}"
-
     spec:
       replicas: 1
       selector:
@@ -80,7 +79,6 @@ objects:
           labels:
             application: "${APPLICATION_NAME}"
             deploymentConfig: "${APPLICATION_NAME}"
-
         spec:
           containers:
               - name: "${APPLICATION_NAME}"
@@ -120,36 +118,33 @@ objects:
                     successThreshold: 1
                     timeoutSeconds: 1
                 securityContext:
-                  runAsNonRoot: true
-                  runAsUser: 1001
-                serviceAccount: websphere
-                serviceAccountName: websphere
-                terminationGracePeriodSeconds: 60
-                volumeMounts:
-                  -
-                    mountPath: /etc/keystore/cert/
-                    name: keystore-cert
-                    readOnly: true
-          volumes:
-              -
-                name: keystore-cert
-                secret: ~
-                secretName: "${APPLICATION_NAME}-dev-cert-secret"
+                  capabilities:
+                    drop:
+                      - ALL
+                  privileged: false
+                  readOnlyRootFilesystem: false
+                  allowPrivilegeEscalation: false
+          serviceAccount: websphere
+          serviceAccountName: websphere
+          terminationGracePeriodSeconds: 60
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+
+      triggers:
+        - imageChangeParams:
+            automatic: true
+            containerNames:
+              - "${APPLICATION_NAME}"
+            from:
+              kind: ImageStream
+              name: "${APPLICATION_NAME}"
+          type: ImageChange
+        - type: ConfigChange
 parameters:
   -
     description: "The name for the application."
     name: APPLICATION_NAME
     required: true
     value: tasks
-triggers:
-  -
-    imageChangeParams:
-      automatic: true
-      containerNames:
-        - "${APPLICATION_NAME}"
-      from:
-        kind: ImageStream
-        name: "${APPLICATION_NAME}"
-    type: ImageChange
-  -
-    type: ConfigChange
+
